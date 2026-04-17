@@ -13,40 +13,40 @@ int adj[MAX][MAX] = {
 
 bool visited[MAX];
 
-int q[MAX],front=0,rear=0;
+int s[MAX],top=-1;
 
-void enqueue(int x){
-    q[rear++]=x;
+void push(int x){
+    s[++top]=x;
 }
 
-int dequeue(){
-    return q[front++];
+int pop(){
+    return s[top--];
 }
 
 bool empty(){
-    return front ==rear;
+    return top==-1;
 }
 
-void bfs(int start){
+void dfs(int start){
     for(int i=0;i<MAX;i++){
         visited[i]=false;
     }
+    push(start);
     visited[start]=true;
-    enqueue(start);
-    cout <<"bfs traversal :";
     while(!empty()){
-        int node = dequeue();
-        cout << node<<" ";
+        int node = pop();
+        cout <<node<<" ";
         for(int i=0;i<MAX;i++){
             if(!visited[i] && adj[node][i]){
                 visited[i]=true;
-                enqueue(i);
+                push(i);
             }
         }
     }
+
 }
 
 int main() {
-    bfs(0);
+    dfs(0);
     return 0;
 }

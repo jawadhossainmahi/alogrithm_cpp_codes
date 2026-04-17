@@ -1,4 +1,3 @@
-// Online C++ compiler to run C++ program online
 #include <iostream>
 using namespace std;
 
@@ -14,7 +13,7 @@ int adj[MAX][MAX] = {
 
 bool visited[MAX];
 
-void bfs(int node){
+void dfs(int node){
     visited[node]=true;
     cout <<node<<" ";
     for(int i=0;i<MAX;i++){
@@ -29,7 +28,7 @@ int main() {
     for(int i=0;i<MAX;i++){
         visited[i]=false;
     }
-    cout <<"bfs traversal :";
-    bfs(0);
+    cout <<"dfs traversal :";
+    dfs(0);
     return 0;
 }
